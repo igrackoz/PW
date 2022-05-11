@@ -1,0 +1,40 @@
+<div>
+      
+        <a href="login.html">Login</a>
+
+    </div>
+
+    <div class="container-fluid p-5 bg-primary text-white text-center">
+      
+        <h1> Sistema para la administracion de actividades complementarias </h1>
+        <p> Programacion web </p>
+
+    </div>
+
+    <div class="container mt-5"> 
+      
+        <div class="row"> 
+           
+          <div class="col-sm-4"> 
+              <h2>¿Que son?</h2> 
+
+            <p>Son todas aquellas actividades que realiza el estudiante en beneficio de su formación integral con el objetivo de complementar su formación y desarrollo de competencias profesionales</p>
+
+          </div>
+          <div class="col-sm-4"> 
+              
+           <h3> Valor Curricular </h3>
+           <p>Para el conjunto de las actividades complementarias establecidas en el plan de estudios es de cinco créditos, considerando que por cada crédito equivale a veinte horas efectivas y verificables, su cumplimiento debe ser dentro de los seis primeros semestres</p>
+
+          </div>
+          <div class="col-sm-4"> 
+              
+           <h3> tipos de actividades </h3>
+           <p>tutoría, actividades extraescolares, proyecto de investigación, proyecto integrador, participación en eventos académicos, productividad laboral, emprendedurismo, fomento a la lectura, construcción de prototipos y desarrollo tecnológico, conservación al medio ambiente, participación en ediciones, fomento a la cultura y/o aquellas que la institución considere</p>
+
+          </div>
+
+        </div>
+
+
+    </div>

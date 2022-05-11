@@ -1,0 +1,12 @@
+<div class="media d-flex">
+                                        <div class="media-body">
+                                        <h3>Act. Extraescolares</h3>
+                                        <p class = "card-text">Nombre</p>
+                                        <p class = "card-text">Horario</p>
+                                        <p class = "card-text">Docente Responsable</p>
+                                        <p class = "card-text">Descripción</p>
+                                        <p class = "card-text">Lugar</p>
+                                        <p class = "card-text">Periodo de realización</p>
+                                        <p class = "card-text">Cupo</p>
+                                        <p class = "card-text">Mat. Requerido</p>
+                                        <div> 
