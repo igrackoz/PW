@@ -1,5 +1,7 @@
 <?php
+
 if (isset($_POST['signIn'])) {
+
 	include('includes/funciones.php');
 	echo "El boton fue presionado";
 
@@ -18,7 +20,7 @@ if (isset($_POST['signIn'])) {
 	$pwd = $resultado['password'];
 	echo "Contraseña almacenada = " . $pwd;
 
-	if (password_verify($pswd, $pwd)) {
+	if ($pswd === $pwd) {
 		echo "<br>" . "contraseña coincide";
 		session_start();
 		$_SESSION['id'] = $resultado['id'];
@@ -36,11 +38,11 @@ if (isset($_POST['signIn'])) {
 		echo "<br> aqui tenemos que rediriguir el usuario a login.php";
 		echo "<br> para redirigir necesitamos     hader('location:login.php')";
 	}
+}
 
+if (isset($_POST['signup'])) {
 
-	if (isset($_POST['signup'])) {
-
-		if (isset($_POST['email'])) {
+		if (!isset($_POST['email'])) {
 			$_SESSION['error'] = "se requiere el email";
 		}
 		if (empty($_POST['pswd'])) {
@@ -59,7 +61,7 @@ if (isset($_POST['signIn'])) {
 		$pswdConf = $_POST['pswdConf'];
 
 		$dominio = explode('@', $email)[1];
-		if (!filter_var($email, FILTER_VALIDATE_EMAIL) || $dominio != 'mistio.com') {
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL) || $dominio != 'misitio.com') {
 			echo "cuenta no es oficial";
 			$error['email'] = "cuenta no institucional";
 		}
@@ -71,16 +73,22 @@ if (isset($_POST['signIn'])) {
 		$result = mysqli_query($conn, $sql) or die;
 
 		if (mysqli_num_rows($result) > 0) {
+			
 			$_SESSION['error'] = "Email existente,registre otro";
 		}
+
 		echo $_SESSION['error'];
 
 		if (empty($_SESSION['error'])) {
+
 			$sql = "INSERT INTO usuarios(email,password, nombre) values('$email' , $pswd, '' )";
 			$result = mysqli_query($conn, $sql) or die;
 			$nuevoid = mysqli_insert_id($conn);
+
 			echo $nuevoid;
+			
 			if ($result) {
+
 				echo "registro exitoso";
 				//TO DO: sendo verificativo email to user
 				// sendVerificacionEmail
@@ -92,16 +100,21 @@ if (isset($_POST['signIn'])) {
 				$_SESSION['type'] = "alert-succes";
 				$_SESSION['nombre'] = $result['nombre'];
 
-				//header(location:index.php);
-			} else {
+				header("location:home.php");
+			}
+			
+			else {
+
 				echo "error: No se puede registrar el usuario";
 				$_SESSION["error"] = "error en base de datos: no se puede registrar el usuario";
 			}
-		} else {
 		}
-	} else {
-		echo "error:no se puede registrar al usuario";
-		//hader('location:includes.php');
+		
+		else { }
+}
 
-	}
+else {
+	
+	echo "error:no se puede registrar al usuario";
+	//hader('location:includes.php');
 }

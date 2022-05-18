@@ -31,7 +31,7 @@ function encabezado($titulo)
 function conn () {
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-    include "includes/system_vars.php";
+    include "system_vars.php";
 
     try {
         return mysqli_connect($servername, $username, $password, $dbname);

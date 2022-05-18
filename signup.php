@@ -18,7 +18,7 @@ encabezado('Administración de actividades complementarias');
 
         <h3 class="text-center form-title">Registro en el sistema de actividades complementarias</h3>
 
-        <form action="usrAuth.php" method="post" class="needs-validation" novalidate>
+        <form action="userAuth.php" method="POST" class="needs-validation" novalidate>
           <div class="form-group">
             <label style="color:red">Uso obligatorio de cuenta oficial</label>
             <input type="email" name="email" class="form-control form-control-lg" placeholder="solo cuentas de misitio.com" required>

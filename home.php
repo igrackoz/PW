@@ -3,6 +3,8 @@ include "includes/funciones.php";
 encabezado('Administracion de actividades complementarias');
 session_start();
 
+$nombre = $_SESSION['nombre'];
+$email = $_SESSION['email'];
 $rol = $_SESSION['rol'];
 //print_r($_SESSION);
 //echo "(".$_SESSION['rol'] .")";
@@ -10,10 +12,10 @@ $rol = $_SESSION['rol'];
 $conn = conn(); //con sera  nuestra variable manejadora de la conexion a la sesion 
 mysqli_set_charset($conn, "utf8");
 
-$control = "18430404";
+$control = "18430399";
 
 //? Recuperar las actividades acreditadas
-$sql = "SELECT * FROM estudiantes WHERE control = $control";
+$sql = "SELECT * FROM usuarios WHERE email = '$email'";
 $dataset = mysqli_query($conn, $sql) or die("database error." . mysqli_error($conn));
 $estudiantes = mysqli_fetch_assoc($dataset);
 
@@ -25,25 +27,31 @@ $act_enproceso = 1;
 ?>
 
 <body>
+
+    <?php include "includes/navbar.php"; ?>
+
     <div class="container">
         <!--global-->
         <div class="container">
             <!-- titulo y progress bar global -->
             <h4 class="col-500 text-uppercase text-center">Actividades Complementarias</h4>
             <p class="display-5 text-center">Bienvenido</p>
-            <p class="display-6 text-center"><?php echo $estudiantes['nombre'] . ' ' . $estudiantes['paterno'] . ' ' . $estudiantes['materno'] ?></p>
-            <p class="display-6 text-center"><?php echo $_SESSION['rol']  ?></p>
+            <p class="display-6 text-center"><?= $estudiantes['nombre'] ?></p>
+            <p class="display-6 text-center"><?= $_SESSION['rol']  ?></p>
             <?php if ($rol == "estudiante") {
                 barraProgresoEstudiante($act_acred, $act_enproceso);
             }
 
-            ?>
-
-            <div class="card text-center mt-3 col-10">
-                <div class="card-body">
-                    <button type="button" class="btn btn-primary btn-lg"><i class="bi bi-plus-lg"></i></button>
+            if ($rol === "administrador") { ?>
+                
+                <div class="card text-center mt-3 col-10">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary btn-lg"><i class="bi bi-plus-lg"></i></button>
+                    </div>
                 </div>
-            </div>
+            <?php
+            }
+            ?>
         </div>
         <div>
             <div class="container col-12">
